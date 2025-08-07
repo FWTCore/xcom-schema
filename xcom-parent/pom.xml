@@ -19,6 +19,8 @@
     <properties>
         <java.version>17</java.version>
         <!--外部-->
+
+        <hutool.version>5.8.29</hutool.version>
         <validation.version>2.0.1.Final</validation.version>
         <guava.version>31.1-jre</guava.version>
         <transmittable.thread.local.version>2.12.6</transmittable.thread.local.version>
@@ -29,18 +31,33 @@
 
         <!--内部-->
         <xcom.core.version>0.0.1-SNAPSHOT</xcom.core.version>
+        <xcom.infra.version>0.0.1-SNAPSHOT</xcom.infra.version>
         <xcom.infra.core.version>0.0.1-SNAPSHOT</xcom.infra.core.version>
         <xcom.infra.starter.version>0.0.1-SNAPSHOT</xcom.infra.starter.version>
     </properties>
 
     <dependencyManagement>
         <dependencies>
+            <dependency>
+                <groupId>cn.hutool</groupId>
+                <artifactId>hutool-bom</artifactId>
+                <version>${hutool.version}</version>
+                <type>pom</type>
+                <!-- 注意这里是import -->
+                <scope>import</scope>
+            </dependency>
 
 
             <dependency>
                 <groupId>org.xcom.shcema</groupId>
                 <artifactId>xcom-core</artifactId>
                 <version>${xcom.core.version}</version>
+            </dependency>
+
+            <dependency>
+                <groupId>org.xcom.shcema</groupId>
+                <artifactId>xcom-infra</artifactId>
+                <version>${xcom.infra.version}</version>
             </dependency>
             <dependency>
                 <groupId>org.xcom.shcema</groupId>
