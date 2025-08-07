@@ -1,0 +1,21 @@
+target/
+logs
+!.mvn/wrapper/maven-wrapper.jar
+
+### IntelliJ IDEA ###
+.idea
+*.iws
+*.iml
+*.ipr
+
+
+### MAC OS ###
+.DS_Store
+.vscode
+target
+
+.back_xcom-bms/
+/.flattened-pom.xml
+
+
+

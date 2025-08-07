@@ -1,0 +1,172 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 https://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+    <parent>
+        <groupId>org.springframework.boot</groupId>
+        <artifactId>spring-boot-starter-parent</artifactId>
+        <version>3.2.5</version>
+        <relativePath/>
+    </parent>
+    <groupId>org.xcom.schema</groupId>
+    <artifactId>xcom-parent</artifactId>
+    <version>0.0.1-SNAPSHOT</version>
+    <packaging>pom</packaging>
+
+    <name>xcom-parent</name>
+    <description>Parent pom providing dependency and plugin management for applications built with Maven</description>
+
+    <properties>
+        <java.version>17</java.version>
+        <!--外部-->
+        <validation.version>2.0.1.Final</validation.version>
+        <guava.version>31.1-jre</guava.version>
+        <transmittable.thread.local.version>2.12.6</transmittable.thread.local.version>
+        <jjwt.version>0.9.1</jjwt.version>
+
+        <!--内部-->
+        <xcom.core.version>0.0.1-SNAPSHOT</xcom.core.version>
+    </properties>
+
+    <dependencyManagement>
+        <dependencies>
+
+
+            <dependency>
+                <groupId>org.xcom.shcema</groupId>
+                <artifactId>xcom-core</artifactId>
+                <version>${xcom.core.version}</version>
+            </dependency>
+
+            <dependency>
+                <groupId>javax.validation</groupId>
+                <artifactId>validation-api</artifactId>
+                <version>${validation.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>com.google.guava</groupId>
+                <artifactId>guava</artifactId>
+                <version>${guava.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>com.alibaba</groupId>
+                <artifactId>transmittable-thread-local</artifactId>
+                <version>${transmittable.thread.local.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>io.jsonwebtoken</groupId>
+                <artifactId>jjwt</artifactId>
+                <version>${jjwt.version}</version>
+            </dependency>
+
+
+        </dependencies>
+    </dependencyManagement>
+    <dependencies>
+    </dependencies>
+
+
+    <build>
+        <plugins>
+            <plugin>
+                <groupId>org.springframework.boot</groupId>
+                <artifactId>spring-boot-maven-plugin</artifactId>
+            </plugin>
+        </plugins>
+    </build>
+
+    <!-- 环境 -->
+    <profiles>
+        <!-- 开发/测试 -->
+        <profile>
+            <id>qa</id>
+            <activation>
+                <!--默认激活配置-->
+                <activeByDefault>true</activeByDefault>
+                <property>
+                    <!-- 如果存在 qa 环境变量，则激活此 profile -->
+                    <name>env</name>
+                    <value>qa</value>
+                </property>
+            </activation>
+            <distributionManagement>
+                <!-- 定义发布版本的仓库 -->
+                <repository>
+                    <id>xcom-qa</id>
+                    <url>http://192.168.1.4:8081/nexus/repository/xcom-qa/</url>
+                </repository>
+                <snapshotRepository>
+                    <id>xcom-qa</id>
+                    <url>http://192.168.1.4:8081/nexus/repository/xcom-qa/</url>
+                </snapshotRepository>
+            </distributionManagement>
+            <repositories>
+                <!-- 定义此 profile 专用的仓库 -->
+                <repository>
+                    <id>xcom-qa</id>
+                    <url>http://192.168.1.4:8081/nexus/repository/xcom-qa-public/</url>
+                </repository>
+            </repositories>
+        </profile>
+        <!-- 预发布 -->
+        <profile>
+            <id>stg</id>
+            <activation>
+                <!--默认激活配置-->
+                <activeByDefault>false</activeByDefault>
+                <property>
+                    <name>env</name>
+                    <value>stg</value>
+                </property>
+            </activation>
+            <distributionManagement>
+                <!-- 定义发布版本的仓库 -->
+                <repository>
+                    <id>xcom-stg</id>
+                    <url>http://192.168.1.4:8081/nexus/repository/xcom-stg/</url>
+                </repository>
+                <snapshotRepository>
+                    <id>xcom-stg</id>
+                    <url>http://192.168.1.4:8081/nexus/repository/xcom-stg/</url>
+                </snapshotRepository>
+            </distributionManagement>
+            <repositories>
+                <!-- 定义此 profile 专用的仓库 -->
+                <repository>
+                    <id>xcom-stg-group</id>
+                    <url>http://192.168.1.4:8081/nexus/repository/xcom-stg-public/</url>
+                </repository>
+            </repositories>
+        </profile>
+        <!-- 生产 -->
+        <profile>
+            <id>prd</id>
+            <activation>
+                <!--默认激活配置-->
+                <activeByDefault>false</activeByDefault>
+                <property>
+                    <name>env</name>
+                    <value>prd</value>
+                </property>
+            </activation>
+            <distributionManagement>
+                <!-- 定义发布版本的仓库 -->
+                <repository>
+                    <id>xcom-prd</id>
+                    <url>http://192.168.1.4:8081/nexus/repository/xcom-prd/</url>
+                </repository>
+                <snapshotRepository>
+                    <id>xcom-prd</id>
+                    <url>http://192.168.1.4:8081/nexus/repository/xcom-prd/</url>
+                </snapshotRepository>
+            </distributionManagement>
+            <repositories>
+                <!-- 定义此 profile 专用的仓库 -->
+                <repository>
+                    <id>xcom-prd</id>
+                    <url>http://192.168.1.4:8081/nexus/repository/xcom-prd/</url>
+                </repository>
+            </repositories>
+        </profile>
+    </profiles>
+</project>
