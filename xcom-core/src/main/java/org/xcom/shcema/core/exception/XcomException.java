@@ -1,4 +1,4 @@
-package org.xcom.shcema.core;
+package org.xcom.shcema.core.exception;
 
 
 import org.xcom.shcema.core.enums.SystemCodeEnum;

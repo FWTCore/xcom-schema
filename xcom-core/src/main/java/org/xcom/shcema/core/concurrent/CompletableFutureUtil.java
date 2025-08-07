@@ -1,7 +1,7 @@
 package org.xcom.shcema.core.concurrent;
 
 import lombok.extern.slf4j.Slf4j;
-import org.xcom.shcema.core.XcomException;
+import org.xcom.shcema.core.exception.XcomException;
 import org.xcom.shcema.core.enums.SystemCodeEnum;
 
 import java.util.concurrent.CompletableFuture;

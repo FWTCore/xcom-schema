@@ -23,9 +23,14 @@
         <guava.version>31.1-jre</guava.version>
         <transmittable.thread.local.version>2.12.6</transmittable.thread.local.version>
         <jjwt.version>0.9.1</jjwt.version>
+        <mybatis-plus.version>3.5.2</mybatis-plus.version>
+        <dynamic-datasource-spring-boot-starter.version>3.5.1</dynamic-datasource-spring-boot-starter.version>
+
 
         <!--内部-->
         <xcom.core.version>0.0.1-SNAPSHOT</xcom.core.version>
+        <xcom.infra.core.version>0.0.1-SNAPSHOT</xcom.infra.core.version>
+        <xcom.infra.starter.version>0.0.1-SNAPSHOT</xcom.infra.starter.version>
     </properties>
 
     <dependencyManagement>
@@ -36,6 +41,16 @@
                 <groupId>org.xcom.shcema</groupId>
                 <artifactId>xcom-core</artifactId>
                 <version>${xcom.core.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>org.xcom.shcema</groupId>
+                <artifactId>xcom-infra-core</artifactId>
+                <version>${xcom.infra.core.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>org.xcom.shcema</groupId>
+                <artifactId>xcom-infra-starter</artifactId>
+                <version>${xcom.infra.starter.version}</version>
             </dependency>
 
             <dependency>
@@ -58,7 +73,16 @@
                 <artifactId>jjwt</artifactId>
                 <version>${jjwt.version}</version>
             </dependency>
-
+            <dependency>
+                <groupId>com.baomidou</groupId>
+                <artifactId>mybatis-plus-boot-starter</artifactId>
+                <version>${mybatis-plus.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>com.baomidou</groupId>
+                <artifactId>dynamic-datasource-spring-boot-starter</artifactId>
+                <version>${dynamic-datasource-spring-boot-starter.version}</version>
+            </dependency>
 
         </dependencies>
     </dependencyManagement>
