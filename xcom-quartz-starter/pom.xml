@@ -12,6 +12,7 @@
     <artifactId>xcom-quartz-starter</artifactId>
     <name>xcom-quartz-starter</name>
     <version>0.0.1-SNAPSHOT</version>
+    <packaging>jar</packaging>
     <description>xcom-quartz-starter</description>
     <properties>
         <java.version>17</java.version>
