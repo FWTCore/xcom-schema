@@ -14,20 +14,8 @@ import org.springframework.stereotype.Component;
 import org.springframework.util.AntPathMatcher;
 import org.springframework.util.PathMatcher;
 import org.springframework.web.servlet.HandlerInterceptor;
-import org.xcom.infra.XcomException;
-import org.xcom.infra.constant.RequestConstant;
-import org.xcom.infra.constant.SystemConstant;
-import org.xcom.infra.context.AccessContextHolder;
-import org.xcom.infra.context.AccessUser;
-import org.xcom.infra.core.model.LoginAccountModel;
-import org.xcom.infra.core.shared.AccountService;
-import org.xcom.infra.enums.SystemCodeEnum;
-import org.xcom.infra.model.AuthUserJwtDTO;
-import org.xcom.infra.model.InfraProperties;
-import org.xcom.infra.starter.config.utils.TokenUtil;
-import org.xcom.infra.tool.JsonUtil;
-import org.xcom.infra.tool.JwtUtil;
 import org.xcom.shcema.core.constant.RequestConstant;
+import org.xcom.shcema.core.constant.SystemConstant;
 import org.xcom.shcema.core.context.AccessContextHolder;
 import org.xcom.shcema.core.context.AccessUser;
 import org.xcom.shcema.core.enums.SystemCodeEnum;
@@ -36,11 +24,10 @@ import org.xcom.shcema.core.model.AuthUserJwtDTO;
 import org.xcom.shcema.core.model.InfraProperties;
 import org.xcom.shcema.core.tool.JsonUtil;
 import org.xcom.shcema.core.tool.JwtUtil;
+import org.xcom.shcema.infra.core.model.LoginAccountModel;
+import org.xcom.shcema.infra.core.shared.AccountService;
 import org.xcom.shcema.infra.starter.utils.TokenUtil;
 
-import javax.annotation.Resource;
-import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpServletResponse;
 import java.util.List;
 
 /**
@@ -150,8 +137,6 @@ public class UserLoginInterceptor implements HandlerInterceptor {
     private void injectAuthUser(LoginAccountModel.LoginUserRespBO loginUserRespBO, String token) {
         AccessUser accessUser = new AccessUser();
         accessUser.setId(loginUserRespBO.getId());
-        accessUser.setCompanyId(loginUserRespBO.getCompanyId());
-        accessUser.setCompanyName(loginUserRespBO.getCompanyName());
         accessUser.setLoginName(loginUserRespBO.getLoginName());
         accessUser.setDisplayName(loginUserRespBO.getDisplayName());
         accessUser.setToken(token);

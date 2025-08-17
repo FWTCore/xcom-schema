@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="org.xcom.shcema.infra.core.dal.mapper.SystemUserRoleMapper">
+    <select id="listLoginUserRoleByUserId"
+            resultType="org.xcom.shcema.infra.core.model.LoginAccountModel$LoginUserRoleRespBO">
+        select sr.id as roleId,
+               application_id,
+               company_id,
+               role_name,
+               role_type
+        from system_user_role sur
+                 inner join system_role sr on sur.system_role_id = sr.id and sr.delete_flag = 0
+        where sur.system_user_id = #{userId}
+    </select>
+</mapper>

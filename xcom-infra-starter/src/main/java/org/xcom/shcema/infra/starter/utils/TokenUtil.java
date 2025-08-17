@@ -1,9 +1,8 @@
 package org.xcom.shcema.infra.starter.utils;
 
+import jakarta.servlet.http.HttpServletRequest;
 import org.apache.commons.lang3.StringUtils;
-import org.xcom.infra.constant.RequestConstant;
-
-import javax.servlet.http.HttpServletRequest;
+import org.xcom.shcema.core.constant.RequestConstant;
 
 /**
  * 用户token提取工具
@@ -31,8 +30,6 @@ public class TokenUtil {
         return null;
     }
 
-
-
     /**
      * 从自定义header中提取
      */
@@ -50,6 +47,5 @@ public class TokenUtil {
         }
         return authToken;
     }
-
 
 }
