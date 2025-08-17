@@ -28,30 +28,30 @@ public class LoginAccountModel {
         /**
          * 用户id
          */
-        private Long id;
+        private Long              id;
 
         /**
          * 公司id
          */
-        private Long companyId;
+        private Long              companyId;
 
         /**
          * 公司
          */
-        private String companyName;
+        private String            companyName;
 
         /**
          * 登录名称
          */
-        private String loginName;
+        private String            loginName;
         /**
          * 用户名称
          */
-        private String displayName;
+        private String            displayName;
         /**
          * 本次登录时间
          */
-        private LocalDateTime lastLoginTime;
+        private LocalDateTime     lastLoginTime;
 
     }
 

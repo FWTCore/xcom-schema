@@ -41,18 +41,15 @@ import java.util.List;
 @Component
 @AllArgsConstructor
 public class UserLoginInterceptor implements HandlerInterceptor {
-    private static final PathMatcher MATCHER = new AntPathMatcher();
+    private static final PathMatcher MATCHER    = new AntPathMatcher();
 
     @Resource
-    private InfraProperties infraProperties;
-
+    private InfraProperties          infraProperties;
 
     @Resource
-    private AccountService accountService;
+    private AccountService           accountService;
 
-
-    private static final String UNKNOWN_IP = "unknown";
-
+    private static final String      UNKNOWN_IP = "unknown";
 
     @Override
     public boolean preHandle(HttpServletRequest request, HttpServletResponse response, Object handler) {
@@ -86,9 +83,11 @@ public class UserLoginInterceptor implements HandlerInterceptor {
                 accessUser.setToken(token);
                 AccessContextHolder.bind(accessUser);
 
-                LoginAccountModel.LoginUserRespBO loginUserDetail = accountService.getLoginUserByUserId(authUserJwtDto.getId());
+                LoginAccountModel.LoginUserRespBO loginUserDetail = accountService
+                    .getLoginUserByUserId(authUserJwtDto.getId());
                 if (ObjectUtils.isEmpty(loginUserDetail)) {
-                    log.warn("通过token获取用户信息错误,token={},AuthUserJwtDTO={}", token, JsonUtil.toJsonString(authUserJwtDto));
+                    log.warn("通过token获取用户信息错误,token={},AuthUserJwtDTO={}", token,
+                        JsonUtil.toJsonString(authUserJwtDto));
                     throw XcomException.create(SystemCodeEnum.REQUEST_UNAUTHORIZED);
                 }
                 alreadyLogin = true;
@@ -137,6 +136,8 @@ public class UserLoginInterceptor implements HandlerInterceptor {
     private void injectAuthUser(LoginAccountModel.LoginUserRespBO loginUserRespBO, String token) {
         AccessUser accessUser = new AccessUser();
         accessUser.setId(loginUserRespBO.getId());
+        accessUser.setCompanyId(loginUserRespBO.getCompanyId());
+        accessUser.setCompanyName(loginUserRespBO.getCompanyName());
         accessUser.setLoginName(loginUserRespBO.getLoginName());
         accessUser.setDisplayName(loginUserRespBO.getDisplayName());
         accessUser.setToken(token);

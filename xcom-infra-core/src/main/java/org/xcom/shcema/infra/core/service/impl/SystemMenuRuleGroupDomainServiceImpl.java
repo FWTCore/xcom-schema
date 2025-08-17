@@ -1,5 +1,6 @@
 package org.xcom.shcema.infra.core.service.impl;
 
+import com.baomidou.dynamic.datasource.annotation.DS;
 import jakarta.annotation.Resource;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;
@@ -13,6 +14,7 @@ import org.xcom.shcema.infra.core.service.SystemMenuRuleGroupDomainService;
  */
 @Slf4j
 @Service
+@DS("infra")
 public class SystemMenuRuleGroupDomainServiceImpl implements SystemMenuRuleGroupDomainService {
     @Resource
     private SystemMenuRuleGroupMapper systemMenuRuleGroupMapper;

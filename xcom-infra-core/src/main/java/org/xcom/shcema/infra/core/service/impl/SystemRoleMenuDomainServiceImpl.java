@@ -1,10 +1,16 @@
 package org.xcom.shcema.infra.core.service.impl;
 
+import cn.hutool.core.collection.CollectionUtil;
+import com.baomidou.dynamic.datasource.annotation.DS;
 import jakarta.annotation.Resource;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;
 import org.xcom.shcema.infra.core.dal.mapper.SystemRoleMenuMapper;
+import org.xcom.shcema.infra.core.model.LoginAccountModel;
 import org.xcom.shcema.infra.core.service.SystemRoleMenuDomainService;
+
+import java.util.ArrayList;
+import java.util.List;
 
 /**
  * 系统角色菜单;(system_role_menu)表服务接口实现类
@@ -13,8 +19,16 @@ import org.xcom.shcema.infra.core.service.SystemRoleMenuDomainService;
  */
 @Slf4j
 @Service
+@DS("infra")
 public class SystemRoleMenuDomainServiceImpl implements SystemRoleMenuDomainService {
     @Resource
     private SystemRoleMenuMapper systemRoleMenuMapper;
 
+    @Override
+    public List<LoginAccountModel.LoginUserAuthRespBO> listSystemUserMenuByRoleIds(List<Long> roleIds) {
+        if (CollectionUtil.isEmpty(roleIds)) {
+            return new ArrayList<>();
+        }
+        return systemRoleMenuMapper.listSystemUserMenuByRoleIds(roleIds);
+    }
 }

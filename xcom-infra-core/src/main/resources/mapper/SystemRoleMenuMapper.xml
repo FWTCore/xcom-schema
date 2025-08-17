@@ -1,5 +1,42 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="org.xcom.shcema.infra.core.dal.mapper.SystemRoleMenuMapper">
-
+    <select id="listSystemUserMenuByRoleIds"
+            resultType="org.xcom.shcema.infra.core.model.LoginAccountModel$LoginUserAuthRespBO">
+        select distinct sm.id as menuId,
+        parent_id,
+        menu_type,
+        page_name,
+        url_path,
+        component_name,
+        component,
+        menu_name,
+        icon_style,
+        keep_alive,
+        hide_in_menu,
+        hide_in_tab,
+        hide_in_breadcrumb,
+        hide_children_in_menu,
+        badge,
+        badge_type,
+        badge_variants,
+        active_url_path,
+        affix_tab,
+        affix_tab_order,
+        iframe_src,
+        ignore_access,
+        link,
+        menu_visible_with_forbidden,
+        open_in_new_window,
+        `order`,
+        query,
+        auth_key,
+        release_flag
+        from system_role_menu srm
+        inner join system_menu sm on srm.system_menu_id = sm.id and sm.delete_flag = 0 and sm.data_status = 1
+        where srm.system_role_id
+        <foreach collection="roleIds" item="roleId" separator="," open="(" close=")">
+            #{roleId}
+        </foreach>
+    </select>
 </mapper>

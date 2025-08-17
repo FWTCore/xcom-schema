@@ -15,7 +15,16 @@ public class AccessUser {
     /**
      * 主键
      */
-    private Long id;
+    private Long   id;
+
+    /**
+     * 公司id
+     */
+    private Long companyId;
+    /**
+     * 公司名称
+     */
+    private String companyName;
 
     /**
      * 登录名称

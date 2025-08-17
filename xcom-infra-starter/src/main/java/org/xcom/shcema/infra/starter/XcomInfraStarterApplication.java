@@ -1,5 +1,6 @@
 package org.xcom.shcema.infra.starter;
 
+import com.github.dreamroute.sqlprinter.starter.anno.EnableSQLPrinter;
 import lombok.extern.slf4j.Slf4j;
 import org.apache.commons.lang3.StringUtils;
 import org.springframework.boot.SpringApplication;
@@ -19,6 +20,7 @@ import java.util.Arrays;
  */
 
 @Slf4j
+@EnableSQLPrinter
 @SpringBootApplication
 public class XcomInfraStarterApplication {
 

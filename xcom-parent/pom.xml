@@ -27,6 +27,9 @@
         <jjwt.version>0.9.1</jjwt.version>
         <mybatis-plus.version>3.5.2</mybatis-plus.version>
         <dynamic-datasource-spring-boot-starter.version>3.5.1</dynamic-datasource-spring-boot-starter.version>
+        <sqlprinter.version>2.3.3-RELEASE</sqlprinter.version>
+        <mapstruct.version>1.4.2.Final</mapstruct.version>
+
 
 
         <!--内部-->
@@ -93,6 +96,17 @@
                 <groupId>com.baomidou</groupId>
                 <artifactId>dynamic-datasource-spring-boot-starter</artifactId>
                 <version>${dynamic-datasource-spring-boot-starter.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>com.github.dreamroute</groupId>
+                <artifactId>sqlprinter-spring-boot-starter</artifactId>
+                <version>${sqlprinter.version}</version>
+            </dependency>
+            <!-- mapstruct -->
+            <dependency>
+                <groupId>org.mapstruct</groupId>
+                <artifactId>mapstruct</artifactId>
+                <version>${mapstruct.version}</version>
             </dependency>
 
         </dependencies>

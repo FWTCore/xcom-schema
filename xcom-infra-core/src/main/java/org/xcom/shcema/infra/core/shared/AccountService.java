@@ -36,4 +36,16 @@ public interface AccountService {
      */
     List<LoginAccountModel.LoginUserRoleRespBO> getLoginUserRoleByUserId(Long userId);
 
+
+    /**
+     * 获取用户授权信息
+     *
+     * @param userId
+     * @param roleIds
+     * @param hasSuperAdmin
+     * @return
+     */
+    List<LoginAccountModel.LoginUserAuthRespBO> listLoginUserAuth(Long userId, List<Long> roleIds, Boolean hasSuperAdmin);
+
+
 }
