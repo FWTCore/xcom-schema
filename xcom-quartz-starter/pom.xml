@@ -8,7 +8,6 @@
         <version>0.0.1-SNAPSHOT</version>
         <relativePath/> <!-- lookup parent from repository -->
     </parent>
-    <groupId>org.xcom.schema</groupId>
     <artifactId>xcom-quartz-starter</artifactId>
     <name>xcom-quartz-starter</name>
     <version>0.0.1-SNAPSHOT</version>
@@ -20,7 +19,7 @@
     <dependencies>
 
         <dependency>
-            <groupId>org.xcom.shcema</groupId>
+            <groupId>org.xcom.schema</groupId>
             <artifactId>xcom-quartz-core</artifactId>
         </dependency>
 

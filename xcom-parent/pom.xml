@@ -53,29 +53,29 @@
 
 
             <dependency>
-                <groupId>org.xcom.shcema</groupId>
+                <groupId>org.xcom.schema</groupId>
                 <artifactId>xcom-core</artifactId>
                 <version>${xcom.core.version}</version>
             </dependency>
 
             <dependency>
-                <groupId>org.xcom.shcema</groupId>
+                <groupId>org.xcom.schema</groupId>
                 <artifactId>xcom-infra-core</artifactId>
                 <version>${xcom.infra.core.version}</version>
             </dependency>
             <dependency>
-                <groupId>org.xcom.shcema</groupId>
+                <groupId>org.xcom.schema</groupId>
                 <artifactId>xcom-infra-starter</artifactId>
                 <version>${xcom.infra.starter.version}</version>
             </dependency>
 
             <dependency>
-                <groupId>org.xcom.shcema</groupId>
+                <groupId>org.xcom.schema</groupId>
                 <artifactId>xcom-quartz-core</artifactId>
                 <version>${xcom.quartz.core.version}</version>
             </dependency>
             <dependency>
-                <groupId>org.xcom.shcema</groupId>
+                <groupId>org.xcom.schema</groupId>
                 <artifactId>xcom-quartz-starter</artifactId>
                 <version>${xcom.quartz.starter.version}</version>
             </dependency>
@@ -127,15 +127,6 @@
     <dependencies>
     </dependencies>
 
-
-    <build>
-        <plugins>
-            <plugin>
-                <groupId>org.springframework.boot</groupId>
-                <artifactId>spring-boot-maven-plugin</artifactId>
-            </plugin>
-        </plugins>
-    </build>
 
     <!-- 环境 -->
     <profiles>

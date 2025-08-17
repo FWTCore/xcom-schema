@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
-<mapper namespace="org.xcom.shcema.infra.core.dal.mapper.SystemUserMapper">
-    <select id="getLoginUserByUserId" resultType="org.xcom.shcema.infra.core.model.LoginAccountModel$LoginUserRespBO">
+<mapper namespace="org.xcom.schema.infra.core.dal.mapper.SystemUserMapper">
+    <select id="getLoginUserByUserId" resultType="org.xcom.schema.infra.core.model.LoginAccountModel$LoginUserRespBO">
         select su.id,
                su.system_company_id as companyId,
                sc.company_name      as companyName,
