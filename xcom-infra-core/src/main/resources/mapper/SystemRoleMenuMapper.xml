@@ -34,7 +34,7 @@
         release_flag
         from system_role_menu srm
         inner join system_menu sm on srm.system_menu_id = sm.id and sm.delete_flag = 0 and sm.data_status = 1
-        where srm.system_role_id
+        where srm.system_role_id in
         <foreach collection="roleIds" item="roleId" separator="," open="(" close=")">
             #{roleId}
         </foreach>
