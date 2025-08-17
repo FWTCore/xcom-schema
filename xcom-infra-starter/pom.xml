@@ -22,10 +22,6 @@
             <groupId>org.xcom.shcema</groupId>
             <artifactId>xcom-infra-core</artifactId>
         </dependency>
-        <dependency>
-            <groupId>org.xcom.shcema</groupId>
-            <artifactId>xcom-infra</artifactId>
-        </dependency>
 
 
     </dependencies>

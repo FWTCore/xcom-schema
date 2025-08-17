@@ -31,7 +31,6 @@
 
         <!--内部-->
         <xcom.core.version>0.0.1-SNAPSHOT</xcom.core.version>
-        <xcom.infra.version>0.0.1-SNAPSHOT</xcom.infra.version>
         <xcom.infra.core.version>0.0.1-SNAPSHOT</xcom.infra.core.version>
         <xcom.infra.starter.version>0.0.1-SNAPSHOT</xcom.infra.starter.version>
     </properties>
@@ -54,11 +53,6 @@
                 <version>${xcom.core.version}</version>
             </dependency>
 
-            <dependency>
-                <groupId>org.xcom.shcema</groupId>
-                <artifactId>xcom-infra</artifactId>
-                <version>${xcom.infra.version}</version>
-            </dependency>
             <dependency>
                 <groupId>org.xcom.shcema</groupId>
                 <artifactId>xcom-infra-core</artifactId>
