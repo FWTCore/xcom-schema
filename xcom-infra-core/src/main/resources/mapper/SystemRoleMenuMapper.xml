@@ -28,7 +28,7 @@
         link,
         menu_visible_with_forbidden,
         open_in_new_window,
-        `order`,
+        order_by,
         query,
         auth_key,
         release_flag

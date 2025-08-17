@@ -31,11 +31,13 @@
         <mapstruct.version>1.4.2.Final</mapstruct.version>
 
 
-
         <!--内部-->
         <xcom.core.version>0.0.1-SNAPSHOT</xcom.core.version>
         <xcom.infra.core.version>0.0.1-SNAPSHOT</xcom.infra.core.version>
         <xcom.infra.starter.version>0.0.1-SNAPSHOT</xcom.infra.starter.version>
+        <xcom.quartz.core.version>0.0.1-SNAPSHOT</xcom.quartz.core.version>
+        <xcom.quartz.starter.version>0.0.1-SNAPSHOT</xcom.quartz.starter.version>
+
     </properties>
 
     <dependencyManagement>
@@ -65,6 +67,17 @@
                 <groupId>org.xcom.shcema</groupId>
                 <artifactId>xcom-infra-starter</artifactId>
                 <version>${xcom.infra.starter.version}</version>
+            </dependency>
+
+            <dependency>
+                <groupId>org.xcom.shcema</groupId>
+                <artifactId>xcom-quartz-core</artifactId>
+                <version>${xcom.quartz.core.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>org.xcom.shcema</groupId>
+                <artifactId>xcom-quartz-starter</artifactId>
+                <version>${xcom.quartz.starter.version}</version>
             </dependency>
 
             <dependency>
