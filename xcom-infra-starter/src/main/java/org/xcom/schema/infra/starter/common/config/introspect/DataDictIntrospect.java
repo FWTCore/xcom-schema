@@ -21,7 +21,7 @@ public class DataDictIntrospect extends NopAnnotationIntrospector {
     @Override
     public Object findSerializer(Annotated am) {
         DataDict dict = am.getAnnotation(DataDict.class);
-        if (dict != null){
+        if (dict != null) {
             return DataDictSerializer.class;
         }
         return null;

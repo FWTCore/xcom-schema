@@ -36,7 +36,6 @@ public class SwaggerModelPropertyPlugin implements ModelPropertyBuilderPlugin {
 
     private static final String delimiter = "、";
 
-
     /**
      * 应用方法，用于为模型属性应用Swagger注解
      *
@@ -46,7 +45,7 @@ public class SwaggerModelPropertyPlugin implements ModelPropertyBuilderPlugin {
     public void apply(ModelPropertyContext context) {
 
         context.getBeanPropertyDefinition()
-                .ifPresent(beanPropertyDefinition -> addDesc(context, beanPropertyDefinition.getField().getAnnotated()));
+            .ifPresent(beanPropertyDefinition -> addDesc(context, beanPropertyDefinition.getField().getAnnotated()));
 
     }
 
@@ -93,7 +92,6 @@ public class SwaggerModelPropertyPlugin implements ModelPropertyBuilderPlugin {
                 log.warn("ApiModelProperty 扩展 ApiModelPropertyPro 异常", exception);
             }
         }
-
 
     }
 

@@ -1,6 +1,7 @@
 package org.xcom.schema.infra.starter.common.config.interceptor;
 
 import cn.hutool.core.util.BooleanUtil;
+import cn.hutool.core.util.ObjectUtil;
 import cn.hutool.extra.servlet.JakartaServletUtil;
 import jakarta.annotation.Resource;
 import jakarta.servlet.http.HttpServletRequest;
@@ -10,11 +11,14 @@ import lombok.extern.slf4j.Slf4j;
 import org.apache.commons.lang3.ObjectUtils;
 import org.apache.commons.lang3.StringUtils;
 import org.slf4j.MDC;
+import org.springframework.core.annotation.AnnotationUtils;
 import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Component;
 import org.springframework.util.AntPathMatcher;
 import org.springframework.util.PathMatcher;
+import org.springframework.web.method.HandlerMethod;
 import org.springframework.web.servlet.HandlerInterceptor;
+import org.xcom.schema.core.annotation.NoNeedLogin;
 import org.xcom.schema.core.constant.SystemConstant;
 import org.xcom.schema.core.context.AccessContextHolder;
 import org.xcom.schema.core.context.AccessUser;
@@ -27,8 +31,10 @@ import org.xcom.schema.core.tool.JsonUtil;
 import org.xcom.schema.core.tool.JwtUtil;
 import org.xcom.schema.infra.core.model.LoginAccountModel;
 import org.xcom.schema.infra.core.shared.AccountService;
+import org.xcom.schema.infra.starter.common.utils.NoNeedLoginUtil;
 import org.xcom.schema.infra.starter.common.utils.TokenUtil;
 
+import javax.annotation.Nullable;
 import java.util.List;
 
 /**
@@ -54,6 +60,12 @@ public class UserLoginInterceptor implements HandlerInterceptor {
 
     @Override
     public boolean preHandle(HttpServletRequest request, HttpServletResponse response, Object handler) {
+        // NoNeedLogin 注解直接放行
+        Boolean checkResp = NoNeedLoginUtil.checkNoNeedLoginUtil(handler);
+        if (BooleanUtil.isTrue(checkResp)) {
+            return true;
+        }
+
         // 检测是否启用
         if (!BooleanUtil.isTrue(infraProperties.getLoginEnable())) {
             return true;

@@ -7,7 +7,6 @@ import org.springframework.web.servlet.config.annotation.InterceptorRegistry;
 import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
 import org.xcom.schema.infra.starter.common.config.interceptor.SignatureInterceptor;
 
-
 /**
  * 签名 拦截器配置
  *
@@ -24,8 +23,7 @@ public class SignatureConfiguration implements WebMvcConfigurer {
 
     @Override
     public void addInterceptors(InterceptorRegistry registry) {
-        registry.addInterceptor(signatureInterceptor)
-                .addPathPatterns("/**");
+        registry.addInterceptor(signatureInterceptor).addPathPatterns("/**");
     }
 
 }

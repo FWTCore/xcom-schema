@@ -36,7 +36,7 @@ public class DataDictSerializer extends StdSerializer<Object> implements Context
     /**
      * 字典注解
      */
-    private DataDict dataDict;
+    private DataDict          dataDict;
 
     public DataDictSerializer() {
         super(Object.class);
@@ -50,7 +50,8 @@ public class DataDictSerializer extends StdSerializer<Object> implements Context
     private String code;
 
     @Override
-    public void serialize(Object value, JsonGenerator jsonGenerator, SerializerProvider serializerProvider) throws IOException {
+    public void serialize(Object value, JsonGenerator jsonGenerator,
+                          SerializerProvider serializerProvider) throws IOException {
         if (ObjectUtil.isNull(value)) {
             jsonGenerator.writeNull();
             return;
@@ -70,7 +71,8 @@ public class DataDictSerializer extends StdSerializer<Object> implements Context
     }
 
     @Override
-    public JsonSerializer<?> createContextual(SerializerProvider prov, BeanProperty beanProperty) throws JsonMappingException {
+    public JsonSerializer<?> createContextual(SerializerProvider prov,
+                                              BeanProperty beanProperty) throws JsonMappingException {
         if (ObjectUtil.isNull(beanProperty)) {
             return prov.findValueSerializer(beanProperty.getType(), beanProperty);
         }
@@ -83,17 +85,16 @@ public class DataDictSerializer extends StdSerializer<Object> implements Context
         return prov.findNullValueSerializer(null);
     }
 
-
     @Override
     public Class<Object> handledType() {
         return Object.class;
     }
 
-
     private String getDictionaryText(String dictCode, String itemCode, Boolean hasTry) {
         // redis 缓存
         String redisKey = KeyRedisUtil.getGlobalRedisKey(RedisConstant.REDIS_INFRA_DICT_PREFIX);
-        SystemDictModel.SystemDictRespBO dictData = (SystemDictModel.SystemDictRespBO) ActionRedisUtil.getRedisMapData(redisKey, dictCode);
+        SystemDictModel.SystemDictRespBO dictData = (SystemDictModel.SystemDictRespBO) ActionRedisUtil
+            .getRedisMapData(redisKey, dictCode);
         if (ObjectUtils.isEmpty(dictData)) {
             // 重试一次
             if (BooleanUtil.isTrue(hasTry)) {
@@ -113,7 +114,8 @@ public class DataDictSerializer extends StdSerializer<Object> implements Context
             log.warn("数据字典【dictCode：" + dictCode + "，itemCode:" + itemCode + "】，字典项列Code不存在");
             return "";
         }
-        SystemDictModel.SystemDictItemRespBO systemDictItemRespBO = dictData.getSystemDictItemList().stream().filter(e -> e.getItemCode().equals(itemCode)).findFirst().orElse(null);
+        SystemDictModel.SystemDictItemRespBO systemDictItemRespBO = dictData.getSystemDictItemList().stream()
+            .filter(e -> e.getItemCode().equals(itemCode)).findFirst().orElse(null);
         if (ObjectUtils.isEmpty(systemDictItemRespBO)) {
             return null;
         }

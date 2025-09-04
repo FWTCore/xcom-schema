@@ -47,7 +47,8 @@ public class DataSerializerConfiguration implements WebMvcConfigurer {
     public static class EnumSerializer extends JsonSerializer<IEnum> {
 
         @Override
-        public void serialize(IEnum value, JsonGenerator jsonGenerator, SerializerProvider serializerProvider) throws IOException {
+        public void serialize(IEnum value, JsonGenerator jsonGenerator,
+                              SerializerProvider serializerProvider) throws IOException {
 
             if (ObjectUtil.isNull(value)) {
                 jsonGenerator.writeNull();

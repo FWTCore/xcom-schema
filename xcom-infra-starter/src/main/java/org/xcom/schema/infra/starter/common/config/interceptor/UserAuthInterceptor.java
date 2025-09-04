@@ -15,6 +15,7 @@ import org.springframework.util.PathMatcher;
 import org.springframework.web.method.HandlerMethod;
 import org.springframework.web.servlet.HandlerInterceptor;
 import org.xcom.schema.core.annotation.Authority;
+import org.xcom.schema.core.annotation.NoNeedLogin;
 import org.xcom.schema.core.constant.SystemConstant;
 import org.xcom.schema.core.context.AccessContextHolder;
 import org.xcom.schema.core.context.AccessUser;
@@ -25,6 +26,7 @@ import org.xcom.schema.core.exception.XcomException;
 import org.xcom.schema.core.model.InfraProperties;
 import org.xcom.schema.infra.core.model.LoginAccountModel;
 import org.xcom.schema.infra.core.shared.AccountService;
+import org.xcom.schema.infra.starter.common.utils.NoNeedLoginUtil;
 
 import javax.annotation.Nullable;
 import java.util.Arrays;
@@ -46,17 +48,19 @@ public class UserAuthInterceptor implements HandlerInterceptor {
 
     private static final PathMatcher MATCHER = new AntPathMatcher();
 
+    @Resource
+    private InfraProperties          infraProperties;
 
     @Resource
-    private InfraProperties infraProperties;
-
-
-    @Resource
-    private AccountService accountService;
-
+    private AccountService           accountService;
 
     @Override
     public boolean preHandle(HttpServletRequest request, HttpServletResponse response, Object handler) {
+        // NoNeedLogin 注解直接放行
+        Boolean checkResp = NoNeedLoginUtil.checkNoNeedLoginUtil(handler);
+        if (BooleanUtil.isTrue(checkResp)) {
+            return true;
+        }
         // 检测是否启用
         if (!BooleanUtil.isTrue(infraProperties.getAuthEnable())) {
             return true;
@@ -116,10 +120,8 @@ public class UserAuthInterceptor implements HandlerInterceptor {
         return noNeedAuth;
     }
 
-
-    private boolean handlePermissionCodeAuthControl(AccessUser accessUser,
-                                                    HandlerMethod handlerMethod) {
-        @Nullable Authority authority = AnnotationUtils.getAnnotation(handlerMethod.getMethod(), Authority.class);
+    private boolean handlePermissionCodeAuthControl(AccessUser accessUser, HandlerMethod handlerMethod) {
+        Authority authority = AnnotationUtils.getAnnotation(handlerMethod.getMethod(), Authority.class);
         if (authority == null) {
             authority = AnnotationUtils.getAnnotation(handlerMethod.getBeanType(), Authority.class);
         }
@@ -153,10 +155,10 @@ public class UserAuthInterceptor implements HandlerInterceptor {
      * @param accessUser
      * @param permissionCodeList
      */
-    private boolean checkSystemUserPermission(AccessUser accessUser,
-                                              List<String> permissionCodeList) {
+    private boolean checkSystemUserPermission(AccessUser accessUser, List<String> permissionCodeList) {
 
-        LoginAccountModel.LoginUserPermissionsRespDO loginUserPermissions = accountService.getLoginUserPermissionsByUserId(accessUser.getId());
+        LoginAccountModel.LoginUserPermissionsRespDO loginUserPermissions = accountService
+            .getLoginUserPermissionsByUserId(accessUser.getId());
         if (ObjectUtil.isNull(loginUserPermissions)) {
             return false;
         }
@@ -173,7 +175,8 @@ public class UserAuthInterceptor implements HandlerInterceptor {
         // stg环境，除去待发布菜单
         List<LoginAccountModel.LoginUserAuthRespBO> validMenuList = loginUserPermissions.getLoginUserAuthList();
         if (Objects.equals(XcomApplicationContext.getFirstActiveProfiles(), SystemConstant.ENV_STG)) {
-            validMenuList = loginUserPermissions.getLoginUserAuthList().stream().filter(LoginAccountModel.LoginUserAuthRespBO::getReleaseFlag).collect(Collectors.toList());
+            validMenuList = loginUserPermissions.getLoginUserAuthList().stream()
+                .filter(LoginAccountModel.LoginUserAuthRespBO::getReleaseFlag).collect(Collectors.toList());
         }
         if (CollectionUtil.isEmpty(validMenuList)) {
             return false;

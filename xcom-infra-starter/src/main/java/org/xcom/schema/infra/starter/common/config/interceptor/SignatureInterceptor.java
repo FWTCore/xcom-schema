@@ -29,15 +29,14 @@ import java.util.List;
 @Component
 public class SignatureInterceptor implements HandlerInterceptor {
 
-
     private static final PathMatcher MATCHER = new AntPathMatcher();
 
     @Resource
-    private InfraProperties infraProperties;
-
+    private InfraProperties          infraProperties;
 
     @Override
-    public boolean preHandle(HttpServletRequest request, HttpServletResponse response, Object handler) throws Exception {
+    public boolean preHandle(HttpServletRequest request, HttpServletResponse response,
+                             Object handler) throws Exception {
         // 检测是否启用
         if (!BooleanUtil.isTrue(infraProperties.getSignatureEnable())) {
             return true;
@@ -88,7 +87,8 @@ public class SignatureInterceptor implements HandlerInterceptor {
             throw new IllegalArgumentException("签名验证失败:X-TIMESTAMP已过期");
         }
         //2.校验签名
-        String signContent = String.format("%s%s%s%s", infraProperties.getApiSecret(), nonceStr, timestamp, infraProperties.getApiSecret());
+        String signContent = String.format("%s%s%s%s", infraProperties.getApiSecret(), nonceStr, timestamp,
+            infraProperties.getApiSecret());
         String sign = DigestUtils.md5DigestAsHex(signContent.getBytes());
         if (!signature.equalsIgnoreCase(sign)) {
             log.error("request URI = " + request.getRequestURI());
@@ -120,6 +120,5 @@ public class SignatureInterceptor implements HandlerInterceptor {
         }
         return noNeedSignature;
     }
-
 
 }

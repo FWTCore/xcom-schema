@@ -23,8 +23,7 @@ public class UserLoginWebConfigurer implements WebMvcConfigurer {
 
     @Override
     public void addInterceptors(InterceptorRegistry registry) {
-        registry.addInterceptor(userLoginInterceptor)
-                .addPathPatterns("/**");
+        registry.addInterceptor(userLoginInterceptor).addPathPatterns("/**");
     }
 
 }

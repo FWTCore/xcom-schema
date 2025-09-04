@@ -23,7 +23,6 @@ public class UserAuthWebConfigurer implements WebMvcConfigurer {
 
     @Override
     public void addInterceptors(InterceptorRegistry registry) {
-        registry.addInterceptor(userAuthInterceptor)
-                .addPathPatterns("/**");
+        registry.addInterceptor(userAuthInterceptor).addPathPatterns("/**");
     }
 }

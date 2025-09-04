@@ -59,7 +59,8 @@ public class GlobalExceptionHandler {
      * @return
      */
     @ExceptionHandler(value = MissingServletRequestParameterException.class)
-    public XcomResult missingServletRequestParameterExceptionHandler(HttpServletRequest req, MissingServletRequestParameterException e) {
+    public XcomResult missingServletRequestParameterExceptionHandler(HttpServletRequest req,
+                                                                     MissingServletRequestParameterException e) {
         String msg = String.format("请求参数【%s】不能为空", e.getParameterName());
         return XcomResult.error(SystemCodeEnum.PARAMETER_ERROR, msg);
     }
@@ -72,7 +73,8 @@ public class GlobalExceptionHandler {
      * @return
      */
     @ExceptionHandler(value = HttpMessageNotReadableException.class)
-    public XcomResult httpMessageNotReadableExceptionHandler(HttpServletRequest req, HttpMessageNotReadableException e) {
+    public XcomResult httpMessageNotReadableExceptionHandler(HttpServletRequest req,
+                                                             HttpMessageNotReadableException e) {
         log.error("参数非法！原因是:", e);
         return XcomResult.error(SystemCodeEnum.PARAMETER_ERROR);
     }
@@ -98,7 +100,8 @@ public class GlobalExceptionHandler {
      * @return
      */
     @ExceptionHandler(value = MethodArgumentTypeMismatchException.class)
-    public XcomResult methodArgumentTypeMismatchExceptionHandler(HttpServletRequest req, MethodArgumentTypeMismatchException e) {
+    public XcomResult methodArgumentTypeMismatchExceptionHandler(HttpServletRequest req,
+                                                                 MethodArgumentTypeMismatchException e) {
         log.error("参数非法！原因是:", e);
         return XcomResult.error(SystemCodeEnum.PARAMETER_ERROR);
     }
@@ -116,7 +119,6 @@ public class GlobalExceptionHandler {
         return XcomResult.error(SystemCodeEnum.PARAMETER_ERROR);
     }
 
-
     /**
      * 找不到资源
      *
@@ -129,7 +131,6 @@ public class GlobalExceptionHandler {
         log.error("找不到资源！原因是:", e);
         return XcomResult.error(SystemCodeEnum.NOT_FOUND);
     }
-
 
     /**
      * 处理其他异常
@@ -156,6 +157,5 @@ public class GlobalExceptionHandler {
         log.error("其他异常:", e);
         return XcomResult.error(SystemCodeEnum.INTERNAL_SERVER_ERROR);
     }
-
 
 }

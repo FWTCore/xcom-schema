@@ -38,7 +38,8 @@ public class RequestLogAspect {
      * 定义切点
      */
     @Pointcut(controllerPointcut)
-    public void controllerExecution() {}
+    public void controllerExecution() {
+    }
 
     /**
      * 环绕通知，可以包围Controller方法的执行，提供更灵活的逻辑处理
@@ -76,6 +77,5 @@ public class RequestLogAspect {
         return proceedingJoinPoint.proceed();
 
     }
-
 
 }

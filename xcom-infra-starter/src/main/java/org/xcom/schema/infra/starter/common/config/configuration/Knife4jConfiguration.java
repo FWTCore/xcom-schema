@@ -32,7 +32,7 @@ import java.util.stream.Collectors;
  * @date 2024/8/10
  */
 
-@Profile(value = {"local-qa", "dev", "qa"})
+@Profile(value = { "local-qa", "dev", "qa" })
 @Configuration
 @EnableSwagger2
 @EnableKnife4j
@@ -42,29 +42,17 @@ public class Knife4jConfiguration {
 
     @Bean(value = "xcom-infra")
     public Docket buildDocket() {
-        Docket docket = new Docket(DocumentationType.OAS_30)
-                .apiInfo(buildApiInfo())
-                .useDefaultResponseMessages(false)
-                .enable(true)
-                .groupName("xcom-infra")
-                .select()
-                .apis(RequestHandlerSelectors.basePackage("org.xcom.infra.starter.modules.controller"))
-                .paths(PathSelectors.any())
-                .build();
+        Docket docket = new Docket(DocumentationType.OAS_30).apiInfo(buildApiInfo()).useDefaultResponseMessages(false)
+            .enable(true).groupName("xcom-infra").select()
+            .apis(RequestHandlerSelectors.basePackage("org.xcom.infra.starter.modules.controller"))
+            .paths(PathSelectors.any()).build();
         return docket;
     }
 
     private ApiInfo buildApiInfo() {
-        return new ApiInfoBuilder()
-                .title("xcom基础接口")
-                .description("xcom基础接口文档")
-                .termsOfServiceUrl("")
-                .version("1.0")
-                .license("")
-                .licenseUrl("")
-                .build();
+        return new ApiInfoBuilder().title("xcom基础接口").description("xcom基础接口文档").termsOfServiceUrl("").version("1.0")
+            .license("").licenseUrl("").build();
     }
-
 
     /**
      * 解决springboot2.6 和 springfox 不兼容问题
@@ -84,9 +72,8 @@ public class Knife4jConfiguration {
             }
 
             private <T extends RequestMappingInfoHandlerMapping> void customizeSpringfoxHandlerMappings(List<T> mappings) {
-                List<T> copy = mappings.stream()
-                        .filter(mapping -> mapping.getPatternParser() == null)
-                        .collect(Collectors.toList());
+                List<T> copy = mappings.stream().filter(mapping -> mapping.getPatternParser() == null)
+                    .collect(Collectors.toList());
                 mappings.clear();
                 mappings.addAll(copy);
             }
@@ -103,6 +90,5 @@ public class Knife4jConfiguration {
             }
         };
     }
-
 
 }

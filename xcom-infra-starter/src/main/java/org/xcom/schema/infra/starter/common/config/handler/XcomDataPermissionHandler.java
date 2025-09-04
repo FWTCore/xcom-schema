@@ -24,7 +24,6 @@ public class XcomDataPermissionHandler implements DataPermissionHandler {
     @Override
     public Expression getSqlSegment(Expression where, String mappedStatementId) {
 
-
         // 假设 column 是你要应用 LIKE 条件的列
         Column column = new Column("your_column_name");
 
@@ -70,10 +69,8 @@ public class XcomDataPermissionHandler implements DataPermissionHandler {
         inExpression.setLeftExpression(column);
         inExpression.setRightItemsList(new ExpressionList(values));
 
-
-// or
+        // or
         where = new OrExpression(where, inExpression);
-
 
         return where;
     }

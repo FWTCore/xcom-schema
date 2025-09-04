@@ -43,7 +43,6 @@ public class StarterGlobalConfiguration {
     @Resource
     private DataDictIntrospect dictSensitiveAnnotationIntrospect;
 
-
     /**
      * 全局统一配置跨域
      *
@@ -135,14 +134,16 @@ public class StarterGlobalConfiguration {
         RedisTemplate<String, Object> redisTemplate = new RedisTemplate<>();
         redisTemplate.setConnectionFactory(redisConnectionFactory);
 
-        Jackson2JsonRedisSerializer<Object> objectJackson2JsonRedisSerializer = new Jackson2JsonRedisSerializer<>(Object.class);
+        Jackson2JsonRedisSerializer<Object> objectJackson2JsonRedisSerializer = new Jackson2JsonRedisSerializer<>(
+            Object.class);
 
         ObjectMapper objectMapper = new ObjectMapper();
         objectMapper.setVisibility(PropertyAccessor.ALL, JsonAutoDetect.Visibility.ANY);
         //解决jackson 无法反序列化LocalDateTime的问题
         objectMapper.disable(SerializationFeature.WRITE_DATES_AS_TIMESTAMPS);
         objectMapper.registerModule(new JavaTimeModule());
-        objectMapper.activateDefaultTyping(objectMapper.getPolymorphicTypeValidator(), ObjectMapper.DefaultTyping.NON_FINAL, JsonTypeInfo.As.PROPERTY);
+        objectMapper.activateDefaultTyping(objectMapper.getPolymorphicTypeValidator(),
+            ObjectMapper.DefaultTyping.NON_FINAL, JsonTypeInfo.As.PROPERTY);
         objectJackson2JsonRedisSerializer.setObjectMapper(objectMapper);
 
         // key序列化
@@ -160,6 +161,5 @@ public class StarterGlobalConfiguration {
     }
 
     // endregion
-
 
 }

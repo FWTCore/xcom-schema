@@ -12,7 +12,6 @@ import org.apache.commons.lang3.StringUtils;
 
 public class ConverterUtil {
 
-
     /**
      * 获取 JsonStreamContext 的名称
      * @param context
