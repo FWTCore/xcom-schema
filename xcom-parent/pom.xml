@@ -29,6 +29,8 @@
         <dynamic-datasource-spring-boot-starter.version>3.5.1</dynamic-datasource-spring-boot-starter.version>
         <sqlprinter.version>2.3.3-RELEASE</sqlprinter.version>
         <mapstruct.version>1.4.2.Final</mapstruct.version>
+        <springfox-spi.version>3.0.0</springfox-spi.version>
+        <ip2region.version>2.7.0</ip2region.version>
 
 
         <!--内部-->
@@ -120,6 +122,19 @@
                 <groupId>org.mapstruct</groupId>
                 <artifactId>mapstruct</artifactId>
                 <version>${mapstruct.version}</version>
+            </dependency>
+
+            <dependency>
+                <groupId>io.springfox</groupId>
+                <artifactId>springfox-swagger-common</artifactId>
+                <version>${springfox-spi.version}</version>
+            </dependency>
+
+            <!--ip 地址-->
+            <dependency>
+                <groupId>org.lionsoul</groupId>
+                <artifactId>ip2region</artifactId>
+                <version>${ip2region.version}</version>
             </dependency>
 
         </dependencies>

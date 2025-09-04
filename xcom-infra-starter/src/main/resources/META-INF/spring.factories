@@ -1,3 +1,3 @@
 
 org.springframework.boot.autoconfigure.EnableAutoConfiguration=\
-  org.xcom.infra.starter.config.AutoConfigure
+  org.xcom.schema.infra.starter.common.config.AutoConfigure

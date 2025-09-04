@@ -23,5 +23,5 @@ public enum AuthTypeEnum implements IEnum {
     PERMISSION(1, "基于权限");
 
     private final Integer code;
-    private final String desc;
+    private final String  desc;
 }

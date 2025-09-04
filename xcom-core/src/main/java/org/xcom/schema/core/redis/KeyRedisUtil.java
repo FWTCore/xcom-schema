@@ -23,10 +23,10 @@ public class KeyRedisUtil {
      */
     public static String getLoginUUID() {
         // 获取登录用户
-        AccessUser accessUser = AccessContextHolder.getAccessUser().orElseThrow(() -> XcomException.create(SystemCodeEnum.REQUEST_UNAUTHORIZED));
+        AccessUser accessUser = AccessContextHolder.getAccessUser()
+            .orElseThrow(() -> XcomException.create(SystemCodeEnum.REQUEST_UNAUTHORIZED));
         return DigestUtils.md5DigestAsHex(accessUser.getToken().getBytes());
     }
-
 
     /**
      * 获取登录角色UUID
@@ -55,7 +55,8 @@ public class KeyRedisUtil {
      * @return
      */
     public static String getLoginRedisKey(String redisKey) {
-        return XcomRedisTemplate.generateRedisKey(redisKey, tempKey -> String.format("%s_%s_%s", RedisConstant.REDIS_INFRA_LOGIN_PREFIX, getLoginUUID(), tempKey));
+        return XcomRedisTemplate.generateRedisKey(redisKey,
+            tempKey -> String.format("%s_%s_%s", RedisConstant.REDIS_INFRA_LOGIN_PREFIX, getLoginUUID(), tempKey));
     }
 
     /**
@@ -65,9 +66,8 @@ public class KeyRedisUtil {
      * @return
      */
     public static String getGlobalRedisKey(String key) {
-        return XcomRedisTemplate.generateRedisKey(key, tempKey -> String.format("%s_%s", RedisConstant.REDIS_GLOBAL_PREFIX, tempKey));
+        return XcomRedisTemplate.generateRedisKey(key,
+            tempKey -> String.format("%s_%s", RedisConstant.REDIS_GLOBAL_PREFIX, tempKey));
     }
 
-
 }
-

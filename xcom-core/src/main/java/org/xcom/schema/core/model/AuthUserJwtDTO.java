@@ -18,6 +18,6 @@ public class AuthUserJwtDTO implements Serializable {
     /**
      * id
      */
-    private Long id;
+    private Long              id;
 
 }

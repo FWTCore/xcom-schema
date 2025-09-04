@@ -20,27 +20,26 @@ public class PageResult<T> implements Serializable {
     /**
      * 页面大小
      */
-    private long pageNum;
+    private long              pageNum;
 
     /**
      * 页面大小
      */
-    private long pageSize;
+    private long              pageSize;
 
     /**
      * 返回总数
      */
-    private long total;
+    private long              total;
 
     /**
      * 分页数量
      */
-    private long pages;
+    private long              pages;
 
     /**
      * 数据列表
      */
-    private List<T> records;
-
+    private List<T>           records;
 
 }

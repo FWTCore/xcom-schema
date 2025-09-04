@@ -38,13 +38,13 @@ public class JwtUtil {
         //下面就是在为payload添加各种标准声明和私有声明了
         //这里其实就是new一个JwtBuilder，设置jwt的body
         JwtBuilder builder = Jwts.builder()
-                //如果有私有声明，一定要先设置这个自己创建的私有的声明，这个是给builder的claim赋值，一旦写在标准的声明赋值之后，就是覆盖了那些标准的声明的
-                //.setClaims(claims)
-                .setSubject(subject)
-                //iat: jwt的签发时间
-                .setIssuedAt(now)
-                //设置签名使用的签名算法和签名使用的秘钥
-                .signWith(signatureAlgorithm, secretKey);
+            //如果有私有声明，一定要先设置这个自己创建的私有的声明，这个是给builder的claim赋值，一旦写在标准的声明赋值之后，就是覆盖了那些标准的声明的
+            //.setClaims(claims)
+            .setSubject(subject)
+            //iat: jwt的签发时间
+            .setIssuedAt(now)
+            //设置签名使用的签名算法和签名使用的秘钥
+            .signWith(signatureAlgorithm, secretKey);
         if (ObjectUtils.isNotEmpty(time) && time >= 0) {
             //生成JWT的时间
             long nowMillis = System.currentTimeMillis();
@@ -56,7 +56,6 @@ public class JwtUtil {
         return builder.compact();
     }
 
-
     /**
      * 验证jwt
      */
@@ -67,9 +66,8 @@ public class JwtUtil {
         try {
             //得到DefaultJwtParser
             claims = Jwts.parser()
-                    //设置签名的秘钥
-                    .setSigningKey(key)
-                    .parseClaimsJws(token).getBody();
+                //设置签名的秘钥
+                .setSigningKey(key).parseClaimsJws(token).getBody();
         } catch (Exception e) {
             return null;
         }

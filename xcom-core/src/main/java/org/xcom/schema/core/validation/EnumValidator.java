@@ -19,7 +19,7 @@ import java.util.Objects;
 
 public class EnumValidator implements ConstraintValidator<EnumValid, Object> {
 
-    private Class clazz;
+    private Class  clazz;
 
     private String validField;
 

@@ -1,7 +1,5 @@
 package org.xcom.schema.core.annotation;
 
-
-
 import org.xcom.schema.core.enums.IEnum;
 
 import java.lang.annotation.ElementType;
@@ -15,7 +13,7 @@ import java.lang.annotation.Target;
  * @author xcom
  * @date 2024/8/11
  */
-@Target({ElementType.FIELD})
+@Target({ ElementType.FIELD })
 @Retention(RetentionPolicy.RUNTIME)
 public @interface ApiModelPropertyPro {
 

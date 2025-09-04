@@ -58,6 +58,6 @@ public enum SystemCodeEnum implements IEnum {
     PARAMETER_ERROR(10002, "参数非法");
 
     private final Integer code;
-    private final String desc;
+    private final String  desc;
 
 }

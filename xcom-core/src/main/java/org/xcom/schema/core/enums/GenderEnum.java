@@ -25,8 +25,7 @@ public enum GenderEnum implements IEnum {
     /**
      * 其他
      */
-    OTHER(2, "其他"),
-    ;
+    OTHER(2, "其他"),;
 
     private final Integer code;
     private final String  desc;

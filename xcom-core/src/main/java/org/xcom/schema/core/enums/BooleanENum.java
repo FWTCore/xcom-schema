@@ -26,5 +26,5 @@ public enum BooleanENum implements IEnum {
     ;
 
     private final Integer code;
-    private final String desc;
+    private final String  desc;
 }

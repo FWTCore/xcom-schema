@@ -1,6 +1,5 @@
 package org.xcom.schema.core.exception;
 
-
 import org.xcom.schema.core.enums.SystemCodeEnum;
 
 import java.util.Collections;
@@ -15,11 +14,11 @@ import java.util.Map;
  */
 
 public class XcomException extends RuntimeException {
-    private static final long serialVersionUID = -7864604160297181941L;
+    private static final long   serialVersionUID = -7864604160297181941L;
 
-    private int code;
+    private int                 code;
 
-    private String message;
+    private String              message;
 
     private Map<String, Object> attributes;
 
@@ -109,13 +108,9 @@ public class XcomException extends RuntimeException {
         return message;
     }
 
-
     @Override
     public String toString() {
-        return "XcomException{" +
-                "code=" + code +
-                ", message='" + message + '\'' +
-                ", attributes=" + attributes +
-                "} " + super.toString();
+        return "XcomException{" + "code=" + code + ", message='" + message + '\'' + ", attributes=" + attributes + "} "
+               + super.toString();
     }
 }

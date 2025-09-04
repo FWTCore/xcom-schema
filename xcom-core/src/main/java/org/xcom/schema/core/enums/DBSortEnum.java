@@ -14,7 +14,6 @@ import lombok.RequiredArgsConstructor;
 @RequiredArgsConstructor
 public enum DBSortEnum implements IEnum {
 
-
     /**
      * 降序
      */
@@ -25,5 +24,5 @@ public enum DBSortEnum implements IEnum {
     ASC(1, "升序");
 
     private final Integer code;
-    private final String desc;
+    private final String  desc;
 }

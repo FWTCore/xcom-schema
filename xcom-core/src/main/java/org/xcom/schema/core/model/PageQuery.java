@@ -19,31 +19,31 @@ import java.util.List;
 @Data
 public class PageQuery<T> implements Serializable {
 
-    private static final long serialVersionUID = 2081104351106889132L;
+    private static final long      serialVersionUID = 2081104351106889132L;
 
     /**
      * 默认当前页数
      */
-    private static final long PAGE_NUM = 1;
+    private static final long      PAGE_NUM         = 1;
 
     /**
      * 默认每页数量
      */
-    private static final long PAGE_SIZE = 10;
+    private static final long      PAGE_SIZE        = 10;
 
     /**
      * 默认排序类型：升序
      */
-    private static final int ORDER_BY = DBSortEnum.ASC.getCode();
+    private static final int       ORDER_BY         = DBSortEnum.ASC.getCode();
 
     /**
      * 当前页数
      */
-    private long pageNum = PAGE_NUM;
+    private long                   pageNum          = PAGE_NUM;
     /**
      * 每页数量
      */
-    private long pageSize = PAGE_SIZE;
+    private long                   pageSize         = PAGE_SIZE;
 
     /**
      * 排序
@@ -54,8 +54,7 @@ public class PageQuery<T> implements Serializable {
     /**
      * 请求参数对象
      */
-    private @Valid T param;
-
+    private @Valid T               param;
 
     /**
      * 排序模型
@@ -68,14 +67,13 @@ public class PageQuery<T> implements Serializable {
         /**
          * 排序字段
          */
-        private String sortField;
+        private String            sortField;
 
         /**
          * 排序方式
          */
         @EnumValid(enumClass = DBSortEnum.class, message = "输入排序方式不合法")
-        private Integer orderBy = ORDER_BY;
+        private Integer           orderBy          = ORDER_BY;
     }
-
 
 }

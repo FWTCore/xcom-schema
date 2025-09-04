@@ -3,7 +3,6 @@ package org.xcom.schema.core.concurrent;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
-
 /**
  * 线程异常处理器
  * 线程池中的线程或者子线程，异常无法在主线程中记录

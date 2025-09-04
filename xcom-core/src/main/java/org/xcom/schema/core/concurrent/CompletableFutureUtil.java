@@ -16,7 +16,6 @@ import java.util.concurrent.CompletableFuture;
 @Slf4j
 public class CompletableFutureUtil {
 
-
     public static <T> T getCompletableFutureResult(CompletableFuture<T> future) {
         try {
             return future.get();

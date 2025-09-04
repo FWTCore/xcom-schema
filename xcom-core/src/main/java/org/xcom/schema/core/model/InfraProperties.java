@@ -40,24 +40,23 @@ public class InfraProperties {
      * 签名时效性，默认1分
      */
     @Value("${xcom.infra.signature.timeliness:60}")
-    private long signatureTimeliness;
+    private long    signatureTimeliness;
 
     /**
      * 签名密钥
      */
     @Value("${xcom.infra.signature.secret:633a23e5b6b0cc5bcde8a83ce71b30ad}")
-    private String apiSecret;
+    private String  apiSecret;
 
     /**
      * 不验证签名的url
      */
     @Value("${xcom.infra.signature.skip-urls: }")
-    private String noSignUrls;
+    private String  noSignUrls;
 
     public List<String> getNoSignUrlList() {
         return splitUrlConfig(noSignUrls);
     }
-
 
     // endregion
 
@@ -72,7 +71,7 @@ public class InfraProperties {
      * 不登录，不鉴权 url
      */
     @Value("${xcom.infra.no-login-urls: }")
-    private String noLoginUrls;
+    private String  noLoginUrls;
 
     /**
      * 检测是否启用，默认启用
@@ -84,20 +83,17 @@ public class InfraProperties {
      * 仅登录，不鉴权 url
      */
     @Value("${xcom.infra.no-auth-urls: }")
-    private String noAuthUrls;
-
+    private String  noAuthUrls;
 
     public List<String> getNoLoginUrlList() {
         return splitUrlConfig(noLoginUrls);
     }
-
 
     public List<String> getNoAuthUrlList() {
         return splitUrlConfig(noAuthUrls);
     }
 
     // endregion
-
 
     /**
      * 拆分url

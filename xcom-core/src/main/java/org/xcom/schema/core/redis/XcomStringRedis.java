@@ -53,7 +53,8 @@ public class XcomStringRedis {
      * @return
      */
     public static String generateRedisKey(String key) {
-        return String.format("%s:%s:%s", XcomApplicationContext.getApplicationId(), XcomApplicationContext.getFirstActiveProfiles(), key);
+        return String.format("%s:%s:%s", XcomApplicationContext.getApplicationId(),
+            XcomApplicationContext.getFirstActiveProfiles(), key);
     }
 
     /**

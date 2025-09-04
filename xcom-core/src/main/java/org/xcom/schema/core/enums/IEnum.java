@@ -32,5 +32,4 @@ public interface IEnum extends Serializable {
      */
     String getDesc();
 
-
 }

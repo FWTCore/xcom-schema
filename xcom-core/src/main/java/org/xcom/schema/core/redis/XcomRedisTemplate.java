@@ -46,7 +46,6 @@ public class XcomRedisTemplate {
         return INSTANCE;
     }
 
-
     /**
      * 生成redis key
      * 格式：应用:环境:业务key
@@ -55,7 +54,8 @@ public class XcomRedisTemplate {
      * @return
      */
     public static String generateRedisKey(String key) {
-        return String.format("%s:%s:%s", XcomApplicationContext.getApplicationId(), XcomApplicationContext.getFirstActiveProfiles(), key);
+        return String.format("%s:%s:%s", XcomApplicationContext.getApplicationId(),
+            XcomApplicationContext.getFirstActiveProfiles(), key);
     }
 
     /**
@@ -145,7 +145,6 @@ public class XcomRedisTemplate {
         return XcomRedisTemplate.getInstance().opsForHash().get(redisKey, hashKey);
     }
 
-
     /**
      * 移除redis缓存
      *
@@ -166,5 +165,3 @@ public class XcomRedisTemplate {
     }
 
 }
-
-

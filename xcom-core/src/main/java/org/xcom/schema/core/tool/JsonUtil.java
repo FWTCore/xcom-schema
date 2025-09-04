@@ -22,7 +22,6 @@ import java.util.TimeZone;
 
 public class JsonUtil {
 
-
     private static final ObjectMapper MAPPER = new JsonMapper();
 
     static {
@@ -94,7 +93,7 @@ public class JsonUtil {
         }
     }
 
-    public JsonNode readTree(String jsonStr){
+    public JsonNode readTree(String jsonStr) {
         try {
             return MAPPER.readTree(jsonStr);
         } catch (JsonProcessingException e) {

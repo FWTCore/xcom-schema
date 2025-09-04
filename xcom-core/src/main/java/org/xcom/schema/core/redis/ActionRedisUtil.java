@@ -70,7 +70,6 @@ public class ActionRedisUtil {
         XcomRedisTemplate.setRedisCacheForHash(redisKey, content);
     }
 
-
     /**
      * 获取数据
      *
@@ -129,4 +128,3 @@ public class ActionRedisUtil {
     }
 
 }
-

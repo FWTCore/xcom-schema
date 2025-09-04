@@ -17,7 +17,6 @@ public class AccessContextHolder {
 
     private static final ThreadLocal<AccessUser> ACCESS_CONTEXT = new TransmittableThreadLocal<>();
 
-
     /**
      * 绑定当前访问用户
      *

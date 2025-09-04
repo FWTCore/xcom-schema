@@ -17,26 +17,21 @@ public class SystemConstant {
     /**
      * 日志用户id
      */
-    public static final String SYSTEM_LOG_USER_ID = "t-u-id";
+    public static final String SYSTEM_LOG_USER_ID  = "t-u-id";
 
     /**
      * stg环境名称
      */
-    public static final String ENV_STG = "stg";
-
+    public static final String ENV_STG             = "stg";
 
     /**
      * http:// http协议
      */
-    public static final String HTTP_PROTOCOL = "http://";
+    public static final String HTTP_PROTOCOL       = "http://";
 
     /**
      * https:// https协议
      */
-    public static final String HTTPS_PROTOCOL = "https://";
-
-
-
+    public static final String HTTPS_PROTOCOL      = "https://";
 
 }
-

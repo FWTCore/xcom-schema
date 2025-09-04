@@ -14,7 +14,7 @@ import java.lang.annotation.Target;
  * @date 2024/8/8
  */
 
-@Target({ElementType.FIELD})
+@Target({ ElementType.FIELD })
 @Retention(RetentionPolicy.RUNTIME)
 @JacksonAnnotationsInside
 //@JsonSerialize(using = DataDictSerializer.class)

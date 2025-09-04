@@ -20,7 +20,7 @@ public class AccessUser {
     /**
      * 公司id
      */
-    private Long companyId;
+    private Long   companyId;
     /**
      * 公司名称
      */
@@ -41,7 +41,12 @@ public class AccessUser {
     private String token;
 
     /**
-     * 用户登录ip
+     * 登录ip
      */
-    private String ipAddress;
+    private String ip;
+
+    /**
+     * 登录ip地区
+     */
+    private String ipRegion;
 }

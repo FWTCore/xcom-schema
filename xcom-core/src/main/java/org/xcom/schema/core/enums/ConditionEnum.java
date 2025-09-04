@@ -16,60 +16,59 @@ public enum ConditionEnum implements IEnum {
     /**
      * ==
      */
-    EQ(1,"=="),
+    EQ(1, "=="),
     /**
      * !=
      */
-    NE(2,"!="),
+    NE(2, "!="),
     /**
      * >
      */
-    GT(3,">"),
+    GT(3, ">"),
     /**
      * >=
      */
-    GE(4,">="),
+    GE(4, ">="),
     /**
      * <
      */
-    LT(5,"<"),
+    LT(5, "<"),
     /**
      * <=
      */
-    LE(6,"<="),
+    LE(6, "<="),
     /**
      * like
      */
-    LIKE(7,"like"),
+    LIKE(7, "like"),
     /**
      * likeLeft
      */
-    LIKE_LEFT(8,"likeLeft"),
+    LIKE_LEFT(8, "likeLeft"),
     /**
      * likeRight
      */
-    LIKE_RIGHT(9,"likeRight"),
+    LIKE_RIGHT(9, "likeRight"),
     /**
      * notLike
      */
-    NOT_LIKE(10,"notLike"),
+    NOT_LIKE(10, "notLike"),
     /**
      * in
      */
-    IN(11,"in"),
+    IN(11, "in"),
     /**
      * notIn
      */
-    NOT_IN(12,"notIn"),
+    NOT_IN(12, "notIn"),
     /**
      * isNull
      */
-    IS_NULL(13,"isNull"),
+    IS_NULL(13, "isNull"),
     /**
      * isNotNull
      */
-    IS_NOT_NULL(14,"isNotNull"),
-    ;
+    IS_NOT_NULL(14, "isNotNull"),;
 
     private final Integer code;
     private final String  desc;

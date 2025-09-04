@@ -21,20 +21,20 @@ public class XcomResult<T> implements Serializable {
     /**
      * 是否成功，true：成功，false：失败
      */
-    private boolean success;
+    private boolean           success;
     /**
      * 错误码
      * 非异常为200
      */
-    private int code;
+    private int               code;
     /**
      * 提示信息
      */
-    private String message;
+    private String            message;
     /**
      * 响应数据
      */
-    private T data;
+    private T                 data;
 
     public XcomResult() {
         this.success = true;

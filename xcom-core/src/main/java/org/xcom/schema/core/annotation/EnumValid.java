@@ -22,8 +22,8 @@ import static java.lang.annotation.RetentionPolicy.RUNTIME;
  * @date 2024/11/11
  */
 
-@Constraint(validatedBy = {EnumValidator.class})
-@Target({METHOD, FIELD, ANNOTATION_TYPE, CONSTRUCTOR, PARAMETER})
+@Constraint(validatedBy = { EnumValidator.class })
+@Target({ METHOD, FIELD, ANNOTATION_TYPE, CONSTRUCTOR, PARAMETER })
 @Retention(RUNTIME)
 public @interface EnumValid {
     /**

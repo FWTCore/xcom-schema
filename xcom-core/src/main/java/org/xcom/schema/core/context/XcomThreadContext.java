@@ -16,7 +16,6 @@ public class XcomThreadContext<T extends AccessUser> {
 
     private String traceUserId;
 
-    private T accessUser;
+    private T      accessUser;
 
 }
-

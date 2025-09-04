@@ -40,7 +40,6 @@ public class XcomApplicationContext implements ApplicationContextAware {
         return applicationContext.getId();
     }
 
-
     @Override
     public void setApplicationContext(ApplicationContext applicationContext) throws BeansException {
         XcomApplicationContext.applicationContext = applicationContext;
