@@ -4,7 +4,7 @@ import com.baomidou.mybatisplus.annotation.TableName;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
 import lombok.ToString;
-import org.xcom.schema.core.model.EntityBaseDO;
+import org.xcom.schema.core.model.AbstractEntityBaseDO;
 
 /**
  * 系统操作日志;system_operation_log数据表的DO对象
@@ -15,7 +15,7 @@ import org.xcom.schema.core.model.EntityBaseDO;
 @ToString(callSuper = true)
 @EqualsAndHashCode(callSuper = true)
 @TableName("system_operation_log")
-public class SystemOperationLogDO extends EntityBaseDO {
+public class SystemOperationLogDO extends AbstractEntityBaseDO {
 
     /**
      * 系统业务,;

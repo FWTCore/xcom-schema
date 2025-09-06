@@ -5,7 +5,7 @@ import lombok.Data;
 import lombok.EqualsAndHashCode;
 import lombok.ToString;
 import org.xcom.schema.core.enums.DateStatusEnum;
-import org.xcom.schema.core.model.EntityBaseDO;
+import org.xcom.schema.core.model.AbstractEntityBaseDO;
 
 /**
  * 系统数据规则组;system_data_rule_group数据表的DO对象
@@ -16,7 +16,7 @@ import org.xcom.schema.core.model.EntityBaseDO;
 @ToString(callSuper = true)
 @EqualsAndHashCode(callSuper = true)
 @TableName("system_data_rule_group")
-public class SystemDataRuleGroupDO extends EntityBaseDO {
+public class SystemDataRuleGroupDO extends AbstractEntityBaseDO {
 
     /**
      * 规则组名,;

@@ -4,7 +4,7 @@ import com.baomidou.mybatisplus.annotation.TableName;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
 import lombok.ToString;
-import org.xcom.schema.core.model.EntityBaseDO;
+import org.xcom.schema.core.model.AbstractEntityBaseDO;
 
 /**
  * 系统角色菜单规则;system_role_menu_rule数据表的DO对象
@@ -15,7 +15,7 @@ import org.xcom.schema.core.model.EntityBaseDO;
 @ToString(callSuper = true)
 @EqualsAndHashCode(callSuper = true)
 @TableName("system_role_menu_rule")
-public class SystemRoleMenuRuleDO extends EntityBaseDO {
+public class SystemRoleMenuRuleDO extends AbstractEntityBaseDO {
 
     /**
      * 系统角色菜单id,;

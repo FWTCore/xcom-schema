@@ -1,6 +1,7 @@
 package org.xcom.schema.infra.core.shared;
 
-import org.xcom.schema.infra.core.model.LoginAccountModel;
+import org.xcom.schema.infra.core.model.request.LoginReqBO;
+import org.xcom.schema.infra.core.model.response.LoginAccountModel;
 
 import java.util.List;
 
@@ -28,6 +29,7 @@ public interface AccountService {
      * @return
      */
     LoginAccountModel.LoginUserRespBO getLoginUserByUserId(Long userId);
+
     /**
      * 获取用户角色
      *
@@ -35,7 +37,6 @@ public interface AccountService {
      * @return
      */
     List<LoginAccountModel.LoginUserRoleRespBO> getLoginUserRoleByUserId(Long userId);
-
 
     /**
      * 获取用户授权信息
@@ -45,7 +46,14 @@ public interface AccountService {
      * @param hasSuperAdmin
      * @return
      */
-    List<LoginAccountModel.LoginUserAuthRespBO> listLoginUserAuth(Long userId, List<Long> roleIds, Boolean hasSuperAdmin);
+    List<LoginAccountModel.LoginUserAuthRespBO> listLoginUserAuth(Long userId, List<Long> roleIds,
+                                                                  Boolean hasSuperAdmin);
 
+    /**
+     * 获取登录用户的token
+     * @param loginReqBO
+     * @return 返回token
+     */
+    String userLogin(LoginReqBO loginReqBO);
 
 }

@@ -26,6 +26,18 @@ public class XcomException extends RuntimeException {
         return new XcomException(errorCode);
     }
 
+    public static XcomException create(String message) {
+        return new XcomException(SystemCodeEnum.BUSINESS_EXCEPTION, message);
+    }
+
+    public static XcomException create(Throwable ex) {
+        return new XcomException(SystemCodeEnum.BUSINESS_EXCEPTION, ex);
+    }
+
+    public static XcomException create(String message, Throwable ex) {
+        return new XcomException(SystemCodeEnum.BUSINESS_EXCEPTION, message, ex);
+    }
+
     public static XcomException create(SystemCodeEnum code, Throwable ex) {
         return new XcomException(code, ex);
     }

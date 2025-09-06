@@ -6,8 +6,16 @@ import cn.hutool.core.util.ObjectUtil;
 import jakarta.annotation.Resource;
 import lombok.extern.slf4j.Slf4j;
 import org.apache.commons.lang3.ObjectUtils;
+import org.apache.commons.lang3.StringUtils;
 import org.springframework.stereotype.Service;
-import org.xcom.schema.infra.core.model.LoginAccountModel;
+import org.xcom.schema.core.enums.DateStatusEnum;
+import org.xcom.schema.core.model.AuthUserJwtDTO;
+import org.xcom.schema.core.tool.JsonUtil;
+import org.xcom.schema.core.tool.JwtUtil;
+import org.xcom.schema.infra.core.model.SystemUserBO;
+import org.xcom.schema.infra.core.model.request.LoginReqBO;
+import org.xcom.schema.infra.core.model.response.LoginAccountModel;
+import org.xcom.schema.infra.core.service.SystemRoleDomainService;
 import org.xcom.schema.infra.core.shared.AccountService;
 import org.xcom.schema.core.concurrent.CompletableFutureUtil;
 import org.xcom.schema.core.concurrent.XcomThreadPoolFactory;
@@ -17,9 +25,7 @@ import org.xcom.schema.core.redis.ActionRedisUtil;
 import org.xcom.schema.core.redis.KeyRedisUtil;
 import org.xcom.schema.infra.core.enums.SystemRoleEnum;
 import org.xcom.schema.infra.core.service.SystemMenuDomainService;
-import org.xcom.schema.infra.core.service.SystemRoleMenuDomainService;
 import org.xcom.schema.infra.core.service.SystemUserDomainService;
-import org.xcom.schema.infra.core.service.SystemUserRoleDomainService;
 
 import java.util.List;
 import java.util.concurrent.CompletableFuture;
@@ -38,13 +44,11 @@ import java.util.stream.Collectors;
 public class AccountServiceImpl implements AccountService {
 
     @Resource
-    private SystemUserDomainService     systemUserDomainService;
+    private SystemUserDomainService systemUserDomainService;
     @Resource
-    private SystemUserRoleDomainService systemUserRoleDomainService;
+    private SystemMenuDomainService systemMenuDomainService;
     @Resource
-    private SystemMenuDomainService     systemMenuDomainService;
-    @Resource
-    private SystemRoleMenuDomainService systemRoleMenuDomainService;
+    private SystemRoleDomainService systemRoleDomainService;
 
     @Override
     public LoginAccountModel.LoginUserPermissionsRespDO getLoginUserPermissionsByUserId(Long userId) {
@@ -126,7 +130,7 @@ public class AccountServiceImpl implements AccountService {
 
         List<LoginAccountModel.LoginUserRoleRespBO> resultData;
         if (ObjectUtils.isEmpty(redisData)) {
-            resultData = systemUserRoleDomainService.listLoginUserRoleByUserId(userId);
+            resultData = systemUserDomainService.listLoginUserRoleByUserId(userId);
             if (CollectionUtil.isNotEmpty(resultData)) {
                 ActionRedisUtil.cacheRedisDataForLogin(redisRoleKey, resultData);
             }
@@ -152,7 +156,7 @@ public class AccountServiceImpl implements AccountService {
             if (BooleanUtil.isTrue(hasSuperAdmin)) {
                 resultData = systemMenuDomainService.listAllMenu(Boolean.FALSE);
             } else {
-                resultData = systemRoleMenuDomainService.listSystemUserMenuByRoleIds(roleIds);
+                resultData = systemRoleDomainService.listSystemUserMenuByRoleIds(roleIds);
             }
             if (CollectionUtil.isNotEmpty(resultData)) {
                 ActionRedisUtil.cacheRedisDataForLogin(redisPermKey, resultData);
@@ -165,5 +169,30 @@ public class AccountServiceImpl implements AccountService {
         }
 
         return resultData;
+    }
+
+    @Override
+    public String userLogin(LoginReqBO loginReqBO) {
+        if (ObjectUtil.isNull(loginReqBO)) {
+            throw XcomException.create(SystemCodeEnum.PARAMETER_ERROR);
+        }
+        SystemUserBO loginUser = systemUserDomainService.getLoginUserByLoginName(loginReqBO.getLoginName());
+        if (ObjectUtil.isNull(loginUser)) {
+            log.info("账户登录名称不存在");
+            throw XcomException.create("账户或者密码错误");
+        }
+        if (!StringUtils.equals(loginUser.getLoginPassword(), loginReqBO.getLoginPassword())) {
+            log.info("账户登录密码错误");
+            throw XcomException.create("账户或者密码错误");
+        }
+        if (ObjectUtil.equal(loginUser.getUserStatus(), DateStatusEnum.EnableEnum.DISABLE.getCode())) {
+            log.info("账户登录名称不存在");
+            throw XcomException.create("账户或者密码错误");
+        }
+        // 处理token
+        AuthUserJwtDTO authUserJwtDTO = new AuthUserJwtDTO();
+        authUserJwtDTO.setId(loginUser.getId());
+        // 不设置过期时间，通过redis的缓存时间来过期
+        return JwtUtil.generateToken(JsonUtil.toJsonString(authUserJwtDTO), -1L);
     }
 }

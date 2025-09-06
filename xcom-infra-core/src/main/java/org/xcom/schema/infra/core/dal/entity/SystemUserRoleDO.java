@@ -4,7 +4,7 @@ import com.baomidou.mybatisplus.annotation.TableName;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
 import lombok.ToString;
-import org.xcom.schema.core.model.EntityBaseDO;
+import org.xcom.schema.core.model.AbstractEntityBaseDO;
 
 /**
  * 系统用户角色;system_user_role数据表的DO对象
@@ -15,7 +15,7 @@ import org.xcom.schema.core.model.EntityBaseDO;
 @ToString(callSuper = true)
 @EqualsAndHashCode(callSuper = true)
 @TableName("system_user_role")
-public class SystemUserRoleDO extends EntityBaseDO {
+public class SystemUserRoleDO extends AbstractEntityBaseDO {
 
     /**
      * 系统用户id,;

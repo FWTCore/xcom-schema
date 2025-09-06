@@ -1,7 +1,7 @@
 package org.xcom.schema.infra.core.service;
 
 
-import org.xcom.schema.infra.core.model.LoginAccountModel;
+import org.xcom.schema.infra.core.model.response.LoginAccountModel;
 
 import java.util.List;
 

@@ -5,7 +5,7 @@ import lombok.Data;
 import lombok.EqualsAndHashCode;
 import lombok.ToString;
 import org.xcom.schema.core.enums.DateStatusEnum;
-import org.xcom.schema.core.model.EntityBaseDO;
+import org.xcom.schema.core.model.AbstractEntityBaseDO;
 
 /**
  * 系统字典;system_dict数据表的DO对象
@@ -16,7 +16,7 @@ import org.xcom.schema.core.model.EntityBaseDO;
 @ToString(callSuper = true)
 @EqualsAndHashCode(callSuper = true)
 @TableName("system_dict")
-public class SystemDictDO extends EntityBaseDO {
+public class SystemDictDO extends AbstractEntityBaseDO {
 
     /**
      * 字典名称,;

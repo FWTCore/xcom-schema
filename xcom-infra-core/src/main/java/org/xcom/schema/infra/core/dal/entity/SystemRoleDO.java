@@ -5,7 +5,7 @@ import lombok.Data;
 import lombok.EqualsAndHashCode;
 import lombok.ToString;
 import org.xcom.schema.infra.core.enums.SystemRoleEnum;
-import org.xcom.schema.core.model.EntityBaseDO;
+import org.xcom.schema.core.model.AbstractEntityBaseDO;
 
 /**
  * 系统角色;system_role数据表的DO对象
@@ -16,7 +16,7 @@ import org.xcom.schema.core.model.EntityBaseDO;
 @ToString(callSuper = true)
 @EqualsAndHashCode(callSuper = true)
 @TableName("system_role")
-public class SystemRoleDO extends EntityBaseDO {
+public class SystemRoleDO extends AbstractEntityBaseDO {
 
     /**
      * 角色名称,;

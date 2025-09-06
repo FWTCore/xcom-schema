@@ -4,7 +4,7 @@ import com.baomidou.mybatisplus.annotation.TableName;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
 import lombok.ToString;
-import org.xcom.schema.core.model.EntityBaseDO;
+import org.xcom.schema.core.model.AbstractEntityBaseDO;
 
 /**
  * 系统菜单规则组;system_menu_rule_group数据表的DO对象
@@ -15,7 +15,7 @@ import org.xcom.schema.core.model.EntityBaseDO;
 @ToString(callSuper = true)
 @EqualsAndHashCode(callSuper = true)
 @TableName("system_menu_rule_group")
-public class SystemMenuRuleGroupDO extends EntityBaseDO {
+public class SystemMenuRuleGroupDO extends AbstractEntityBaseDO {
 
     /**
      * 系统菜单id,;

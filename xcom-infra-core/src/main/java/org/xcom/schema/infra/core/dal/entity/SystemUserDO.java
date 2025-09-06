@@ -4,8 +4,9 @@ import com.baomidou.mybatisplus.annotation.TableName;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
 import lombok.ToString;
+import org.xcom.schema.core.enums.DateStatusEnum;
 import org.xcom.schema.core.enums.GenderEnum;
-import org.xcom.schema.core.model.EntityBaseDO;
+import org.xcom.schema.core.model.AbstractEntityBaseDO;
 
 import java.time.LocalDateTime;
 
@@ -18,7 +19,7 @@ import java.time.LocalDateTime;
 @ToString(callSuper = true)
 @EqualsAndHashCode(callSuper = true)
 @TableName("system_user")
-public class SystemUserDO extends EntityBaseDO {
+public class SystemUserDO extends AbstractEntityBaseDO {
 
     /**
      * 系统公司id,;
@@ -78,7 +79,7 @@ public class SystemUserDO extends EntityBaseDO {
 
     /**
      * 数据状态,;
-     * @see DateStatusEnum1
+     * @see DateStatusEnum.EnableEnum
      */
     private Short         userStatus;
 }

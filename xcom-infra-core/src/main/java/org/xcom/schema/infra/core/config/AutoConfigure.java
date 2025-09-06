@@ -13,6 +13,6 @@ import org.springframework.context.annotation.Configuration;
 
 @Configuration
 @ComponentScan("org.xcom.schema.infra.core")
-@MapperScan("org.xcom.schema.infra.core.dal.mapper")
+@MapperScan("org.xcom.schema.infra.core.dal.dao")
 public class AutoConfigure {
 }

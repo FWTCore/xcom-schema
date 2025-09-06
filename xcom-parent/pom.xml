@@ -31,6 +31,7 @@
         <mapstruct.version>1.4.2.Final</mapstruct.version>
         <springfox-spi.version>3.0.0</springfox-spi.version>
         <ip2region.version>2.7.0</ip2region.version>
+        <knife4j.version>4.5.0</knife4j.version>
 
 
         <!--内部-->
@@ -52,7 +53,6 @@
                 <!-- 注意这里是import -->
                 <scope>import</scope>
             </dependency>
-
 
             <dependency>
                 <groupId>org.xcom.schema</groupId>
@@ -124,11 +124,11 @@
                 <version>${mapstruct.version}</version>
             </dependency>
 
-            <dependency>
-                <groupId>io.springfox</groupId>
-                <artifactId>springfox-swagger-common</artifactId>
-                <version>${springfox-spi.version}</version>
-            </dependency>
+<!--            <dependency>-->
+<!--                <groupId>io.springfox</groupId>-->
+<!--                <artifactId>springfox-swagger-common</artifactId>-->
+<!--                <version>${springfox-spi.version}</version>-->
+<!--            </dependency>-->
 
             <!--ip 地址-->
             <dependency>
@@ -136,11 +136,14 @@
                 <artifactId>ip2region</artifactId>
                 <version>${ip2region.version}</version>
             </dependency>
+            <dependency>
+                <groupId>com.github.xiaoymin</groupId>
+                <artifactId>knife4j-openapi3-jakarta-spring-boot-starter</artifactId>
+                <version>${knife4j.version}</version>
+            </dependency>
 
         </dependencies>
     </dependencyManagement>
-    <dependencies>
-    </dependencies>
 
 
     <!-- 环境 -->

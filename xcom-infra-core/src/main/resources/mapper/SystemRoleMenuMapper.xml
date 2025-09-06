@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
-<mapper namespace="org.xcom.schema.infra.core.dal.mapper.SystemRoleMenuMapper">
+<mapper namespace="org.xcom.schema.infra.core.dal.dao.SystemRoleMenuMapper">
     <select id="listSystemUserMenuByRoleIds"
-            resultType="org.xcom.schema.infra.core.model.LoginAccountModel$LoginUserAuthRespBO">
+            resultType="org.xcom.schema.infra.core.model.response.LoginAccountModel$LoginUserAuthRespBO">
         select distinct sm.id as menuId,
         parent_id,
         menu_type,

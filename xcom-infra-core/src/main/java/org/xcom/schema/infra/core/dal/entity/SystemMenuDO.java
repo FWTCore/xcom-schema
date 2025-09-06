@@ -6,7 +6,7 @@ import lombok.EqualsAndHashCode;
 import lombok.ToString;
 import org.xcom.schema.infra.core.enums.SystemMenuEnum;
 import org.xcom.schema.core.enums.DateStatusEnum;
-import org.xcom.schema.core.model.EntityBaseDO;
+import org.xcom.schema.core.model.AbstractEntityBaseDO;
 
 /**
  * 系统菜单;system_menu数据表的DO对象
@@ -17,7 +17,7 @@ import org.xcom.schema.core.model.EntityBaseDO;
 @ToString(callSuper = true)
 @EqualsAndHashCode(callSuper = true)
 @TableName("system_menu")
-public class SystemMenuDO extends EntityBaseDO {
+public class SystemMenuDO extends AbstractEntityBaseDO {
 
     /**
      * 父id,;

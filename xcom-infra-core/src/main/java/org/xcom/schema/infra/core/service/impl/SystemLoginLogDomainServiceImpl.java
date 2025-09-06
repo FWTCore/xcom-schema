@@ -4,7 +4,7 @@ import com.baomidou.dynamic.datasource.annotation.DS;
 import jakarta.annotation.Resource;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;
-import org.xcom.schema.infra.core.dal.mapper.SystemLoginLogMapper;
+import org.xcom.schema.infra.core.dal.dao.SystemLoginLogMapper;
 import org.xcom.schema.infra.core.service.SystemLoginLogDomainService;
 
 /**

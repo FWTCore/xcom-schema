@@ -17,6 +17,8 @@ import org.xcom.schema.core.annotation.DataDict;
 import org.xcom.schema.core.constant.RedisConstant;
 import org.xcom.schema.core.redis.ActionRedisUtil;
 import org.xcom.schema.core.redis.KeyRedisUtil;
+import org.xcom.schema.infra.core.model.response.SystemDictModel;
+import org.xcom.schema.infra.core.shared.DictionaryService;
 
 import java.io.IOException;
 

@@ -21,7 +21,6 @@ public class DateStatusEnum {
     @Getter
     @RequiredArgsConstructor
     public enum EnableEnum implements IEnum {
-
         /**
          * 禁用
          */
